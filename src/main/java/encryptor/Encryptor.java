@@ -7,6 +7,14 @@ import java.util.Date;
 
 public class Encryptor {
 
+	
+	private AlgorithmLocatorServiceFactoryFacade facade;
+	
+	public void setFacade(AlgorithmLocatorServiceFactoryFacade facade) {
+		this.facade = facade;
+	}
+
+
 	public String cryptWord(String word) {
 		// throw expection if its more than one word.
 		if (word.contains(" "))
@@ -83,9 +91,13 @@ public class Encryptor {
 	public String encryptTime() {
 		DateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS");
 		doCalculations();
-		Date date = new Date();
+		Date date = getDate();
 		String sentence = "the time is " + df.format(date) + " right now";
 		return cryptSentence(sentence);
+	}
+	
+	protected Date getDate(){
+		return new Date();
 	}
 
 	private void doCalculations() {
@@ -109,8 +121,18 @@ public class Encryptor {
 		}
 	}
 
+	
 	public String encryptExternal(String text, String algorithmStr) {
-		Algorithm algorithm = AlgorithmLocatorServiceFactoryFacade.getAlgorithm(algorithmStr);
+		Algorithm algorithm = facade.getAlgorithm(algorithmStr);
 		return algorithm.encrypt(text);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

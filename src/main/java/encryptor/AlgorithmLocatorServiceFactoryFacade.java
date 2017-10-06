@@ -2,7 +2,7 @@ package encryptor;
 
 public class AlgorithmLocatorServiceFactoryFacade {
 
-	public static Algorithm getAlgorithm(String algorithm) {
+	public  Algorithm getAlgorithm(String algorithm) {
 		invokeSlowly();
 		return new Algorithm() {
 			@Override
@@ -12,7 +12,7 @@ public class AlgorithmLocatorServiceFactoryFacade {
 		};
 	}
 
-	private static void invokeSlowly() {
+	private  void invokeSlowly() {
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
