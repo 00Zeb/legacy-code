@@ -32,6 +32,12 @@ public class EncryptorTest {
 			
 		};
 		AlgorithmLocatorServiceFactoryFacade mock = Mockito.mock(AlgorithmLocatorServiceFactoryFacade.class);
+		Mockito.when(mock.getAlgorithm(Mockito.anyString())).thenReturn(new Algorithm() {
+			@Override
+			public String encrypt(String text) {
+				return "!5315word!5315";
+			}
+		});
 		encryptor.setFacade(mock);
 	}
 
