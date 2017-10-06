@@ -21,6 +21,8 @@ public class EncryptorTest {
 			@Override
 			protected Date getDate() {
 				Calendar instance = Calendar.getInstance();
+				instance.set(Calendar.YEAR, 2017);
+				instance.set(Calendar.DAY_OF_YEAR, 0);
 				instance.set(Calendar.HOUR_OF_DAY, 0);
 				instance.set(Calendar.MINUTE, 0);
 				instance.set(Calendar.SECOND, 0);
@@ -67,7 +69,7 @@ public class EncryptorTest {
 	public void testEncryptTime() {
 		String result = encryptor.encryptTime();
 		
-		assertEquals("vjg\"vkog\"ku\"2703204239\"22<22<22<2222222\"tkijv\"pqy", result);
+		assertEquals("vjg\"vkog\"ku\"5303404238\"22<22<22<2222222\"tkijv\"pqy", result);
 	}
 	@Test
 	public void testCrptExternal() {
